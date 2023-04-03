@@ -1,35 +1,17 @@
-<?php
-
-// require_once("traitement/database.php");
 
 
-if (isset($_POST['user_name'])) {
-    // Sanitize and validate the user name
-    $user_name = filter_var($_POST['user_name']);
-    if (!preg_match('/^[a-zA-Z0-9_]+$/', $user_name)) {
-        echo "<p class='erreur'>Le pseudo ne doit contenir que des lettres, des chiffres et des tirets bas</p>";
-        exit;
-    }
 
-    // Check if the user name already exists
-    $checkuser = "SELECT * FROM user WHERE user_name = :user_name";
-    $stmt = $conn->prepare($checkuser);
-    $stmt->bindParam(':user_name', $user_name);
-    $stmt->execute();
-    $count = $stmt->rowCount();
-    if ($count > 0) {
-        echo "<div class='erreur2'>Ce pseudo n'est plus disponible</div>";
-    } else {
-        // Insert the user name into the database
-        $insertuser = "INSERT INTO user (user_name) VALUES (:user_name)";
-        $stmt = $conn->prepare($insertuser);
-        $stmt->bindParam(':user_name', $user_name);
-        $stmt->execute();
-        header('Location: login.php');
-    }
-}
+<php
+require_once("./config/autoload.php");
+require_once("./config/prettyDump.php");
+$db = require_once("./config/db.php");
+$manager = new Manager($db);
+$allLocations = $manager->getAllLocations();
 ?>
 
+
+  
+?>
 
 
 <!DOCTYPE html>
@@ -99,3 +81,6 @@ if (isset($_POST['user_name'])) {
 <script src="/htdocs/js/login.js"></script>
 
 </html>
+
+
+
