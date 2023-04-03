@@ -23,9 +23,20 @@ class Manager {
                       'tour_operator_id' => $destination->getTour_operator_id()]);
   }
 
+  public function getTour_operator(int $tour_operator_id){
+    $query = $this->db->prepare(' SELECT *
+                                  FROM tour_operator
+                                  WHERE id = :tour_operator_id');
+    $query->execute(['tour_operator_id' => $tour_operator_id,]);
+
+    $tourOperatorData = $query->fetch(PDO::FETCH_ASSOC);
+
+    return new TourOperator($tourOperatorData);
+  }
+
   public function getAllOperator(){
     $query = $this->db->query(' SELECT * FROM tour_operator
-                                  ORDER BY name');
+                                ORDER BY name');
 
     $allOperatorsData = $query->fetchAll(PDO::FETCH_ASSOC); 
 
@@ -39,15 +50,64 @@ class Manager {
         return $allOperatorsAsObjects; 
   }
 
-  public function getTourOperatorGrade (int $tour_operator_id){
+  public function getTourOperatorScore (int $tour_operator_id){
     $query = $this->db->prepare(' SELECT AVG(value)
                                   FROM score
                                   WHERE tour_operator_id = :tour_operator_id');
     $query->execute(['tour_operator_id' => $tour_operator_id,]);
         
-    $tourOperatorGrade = $query->fetch(PDO::FETCH_ASSOC); 
+    $tourOperatorScore = $query->fetch(PDO::FETCH_ASSOC); 
 
-    return $tourOperatorGrade; 
+    return intval($tourOperatorScore['AVG(value)']*10)/10; 
+  }
+
+  public function getAllLocations(){
+    $query = $this->db->query(' SELECT DISTINCT location
+                                FROM destination
+                                ORDER BY location');
+    $allLocations = $query->fetchAll(PDO::FETCH_ASSOC); 
+    
+    $locationNames = array_column($allLocations, 'location');
+
+    return $locationNames;
+  }
+
+  public function getDestinationsForLocation(string $location){
+    $query = $this->db->prepare(' SELECT *
+                                FROM destination
+                                WHERE location = :location
+                                ORDER BY id');
+    $query->execute(['location' => $location,]);                            
+    $allDestinationsDatas = $query->fetchAll(PDO::FETCH_ASSOC); 
+
+    $allDestinationsAsObjects = [];        
+    
+    foreach ($allDestinationsDatas as $destinationDatas) {
+        $destinationAsObject = new Destination($destinationDatas);
+        array_push($allDestinationsAsObjects, $destinationAsObject);
+    }
+    
+    return $allDestinationsAsObjects; 
+  }
+
+  public function getReviewsForTourOperator(int $tour_operator_id){
+    $query = $this->db->prepare(' SELECT review.message, author.name
+                                  FROM review
+                                  INNER JOIN author
+                                  ON review.author_id = author.id
+                                  WHERE review.tour_operator_id = :tour_operator_id');
+    $query->execute(['tour_operator_id' => $tour_operator_id,]);
+        
+    $allReviewsDatas = $query->fetchAll(PDO::FETCH_ASSOC); 
+
+    $allReviewsAsObjects = [];        
+        
+    foreach ($allReviewsDatas as $reviewData) {
+      $reviewAsObject = new Review($reviewData);
+      array_push($allReviewsAsObjects, $reviewAsObject);
+    }
+
+    return $allReviewsAsObjects;
   }
 
   public function updateOperatorToPremium(int $tour_operator_id){

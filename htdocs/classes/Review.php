@@ -3,10 +3,11 @@ class Review{
 
    private int $id;
    private string $message;
-   private int $author;
+   private $author;
 
   public function __construct(array $data){
     $this->hydrate($data);
+    isset($data['name'])? $this->setAuthor($data['name']):'';
 }
 
   private function hydrate(array $data){
@@ -58,5 +59,6 @@ class Review{
 
       return $this;
    }
+
 }
 ?>
