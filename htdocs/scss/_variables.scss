@@ -51,6 +51,7 @@ $footer: #292825 !default;
 $seablue: #2086d8 !default;
 $sandyellow: #e7bd35 !default;
 $twilightorange: #d7495e !default;
+$star : #d6a800 !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -74,6 +75,7 @@ $colors: (
   "seablue": $seablue,
   "sandyellow": $sandyellow,
   "twilightorange": $twilightorange,
+  "star" : $star,
 ) !default;
 // scss-docs-end colors-map
 
@@ -320,6 +322,7 @@ $saumon: $orange !default;
 $moche: $gris !default;
 $footer: $footer !default;
 $twilightorange: $twilightorange !default;
+$star: $star !default;
 $seablue: $seablue !default;
 $sandyellow: $sandyellow !default;
 
@@ -342,6 +345,7 @@ $theme-colors: (
   "seablue": $seablue,
   "sandyellow": $sandyellow,
   "twilightorange": $twilightorange,
+  "star": $star,
 ) !default;
 // scss-docs-end theme-colors-map
 

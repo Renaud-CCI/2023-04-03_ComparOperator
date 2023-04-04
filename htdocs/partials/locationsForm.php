@@ -1,4 +1,6 @@
+
 <form action="DisplayDestination.php" method="get" name="locationForm" id="locationForm">
+
 
   <label for="location-select">Choisir une destination : </label>
 
