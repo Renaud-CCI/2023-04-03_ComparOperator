@@ -1,7 +1,6 @@
 @import "mixins/banner";
 @include bsBanner("");
 
-
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -52,5 +51,7 @@
 // custom
 @import "custom";
 @import "general";
+@import "indexstyle";
+@import "displaydestination";
 
 // scss-docs-end import-stack
