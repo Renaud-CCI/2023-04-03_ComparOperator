@@ -1,4 +1,4 @@
-<form action="./booking.php" method="get">
+<form action="./displaydestination.php" method="get">
 
 <label for="location-select">Choisir une destination : </label>
 
