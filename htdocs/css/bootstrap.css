@@ -25,6 +25,7 @@
   --bs-seablue: #2086d8;
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
+  --bs-star: #d6a800;
   --bs-gray-100: #f8f9fa;
   --bs-gray-200: #e9ecef;
   --bs-gray-300: #dee2e6;
@@ -49,6 +50,7 @@
   --bs-seablue: #2086d8;
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
+  --bs-star: #d6a800;
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 136, 116, 110;
   --bs-success-rgb: 25, 135, 84;
@@ -64,6 +66,7 @@
   --bs-seablue-rgb: 32, 134, 216;
   --bs-sandyellow-rgb: 231, 189, 53;
   --bs-twilightorange-rgb: 215, 73, 94;
+  --bs-star-rgb: 214, 168, 0;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -3075,6 +3078,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #d7495e;
 }
 
+.btn-star {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #d6a800;
+  --bs-btn-border-color: #d6a800;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #dcb526;
+  --bs-btn-hover-border-color: #dab11a;
+  --bs-btn-focus-shadow-rgb: 182, 143, 0;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #deb933;
+  --bs-btn-active-border-color: #dab11a;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #d6a800;
+  --bs-btn-disabled-border-color: #d6a800;
+}
+
 .btn-outline-primary {
   --bs-btn-color: #0d6efd;
   --bs-btn-border-color: #0d6efd;
@@ -3327,6 +3347,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: #d7495e;
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #d7495e;
+  --bs-gradient: none;
+}
+
+.btn-outline-star {
+  --bs-btn-color: #d6a800;
+  --bs-btn-border-color: #d6a800;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #d6a800;
+  --bs-btn-hover-border-color: #d6a800;
+  --bs-btn-focus-shadow-rgb: 214, 168, 0;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #d6a800;
+  --bs-btn-active-border-color: #d6a800;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #d6a800;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #d6a800;
   --bs-gradient: none;
 }
 
@@ -5005,6 +5042,15 @@ textarea.form-control-lg {
   color: #67232d;
 }
 
+.alert-star {
+  --bs-alert-color: #806500;
+  --bs-alert-bg: #f7eecc;
+  --bs-alert-border-color: #f3e5b3;
+}
+.alert-star .alert-link {
+  color: #665100;
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -5505,6 +5551,20 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #812c38;
   border-color: #812c38;
+}
+
+.list-group-item-star {
+  color: #806500;
+  background-color: #f7eecc;
+}
+.list-group-item-star.list-group-item-action:hover, .list-group-item-star.list-group-item-action:focus {
+  color: #806500;
+  background-color: #ded6b8;
+}
+.list-group-item-star.list-group-item-action.active {
+  color: #fff;
+  background-color: #806500;
+  border-color: #806500;
 }
 
 .btn-close {
@@ -7098,6 +7158,11 @@ textarea.form-control-lg {
   background-color: RGBA(215, 73, 94, var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-star {
+  color: #000 !important;
+  background-color: RGBA(214, 168, 0, var(--bs-bg-opacity, 1)) !important;
+}
+
 .link-primary {
   color: #0d6efd !important;
 }
@@ -7201,6 +7266,13 @@ textarea.form-control-lg {
 }
 .link-twilightorange:hover, .link-twilightorange:focus {
   color: #df6d7e !important;
+}
+
+.link-star {
+  color: #d6a800 !important;
+}
+.link-star:hover, .link-star:focus {
+  color: #deb933 !important;
 }
 
 .ratio {
@@ -7697,6 +7769,11 @@ textarea.form-control-lg {
 .border-twilightorange {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-twilightorange-rgb), var(--bs-border-opacity)) !important;
+}
+
+.border-star {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-star-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-white {
@@ -8596,6 +8673,11 @@ textarea.form-control-lg {
   color: rgba(var(--bs-twilightorange-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-star {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-star-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
@@ -8720,6 +8802,11 @@ textarea.form-control-lg {
 .bg-twilightorange {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-twilightorange-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-star {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-star-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {

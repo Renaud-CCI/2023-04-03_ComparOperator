@@ -8,19 +8,20 @@ class Manager {
   }
 
 
-  public function createTourOperator(TourOperator $tourOperator){
-    $query = $this->db->prepare(' INSERT INTO tour_operator (name, link)
-                                  VALUES (:name, :link)');
-    $query->execute([ 'name' => $tourOperator->getName(),
-                      'link' => $tourOperator->getLink()]);
+  public function createTourOperator(array $tour_operator_data){
+    $query = $this->db->prepare(' INSERT INTO tour_operator (name, link, premium_status)
+                                  VALUES (:name, :link, :premium_status)');
+    $query->execute([ 'name' => $tour_operator_data['name'],
+                      'link' => $tour_operator_data['link'],
+                      'premium_status' => $tour_operator_data['premium_status']]);
   }
 
-  public function createDestination(Destination $destination){
-    $query = $this->db->prepare(' INSERT INTO tour_operator (location, price, tour_operator_id)
+  public function createDestination($destination_datas){
+    $query = $this->db->prepare(' INSERT INTO destination (location, price, tour_operator_id)
                                   VALUES (:location, :price, :tour_operator_id)');
-    $query->execute([ 'location' => $destination->getLocation(),
-                      'price' => $destination->getPrice(),
-                      'tour_operator_id' => $destination->getTour_operator_id()]);
+    $query->execute([ 'location' => $destination_datas['location'],
+                      'price' => $destination_datas['price'],
+                      'tour_operator_id' => $destination_datas['tour_operator_id']]);
   }
 
   public function getTour_operator(int $tour_operator_id){
@@ -40,17 +41,17 @@ class Manager {
 
     $allOperatorsData = $query->fetchAll(PDO::FETCH_ASSOC); 
 
-        $allOperatorsAsObjects = [];        
-        
-        foreach ($allOperatorsData as $operatorData) {
-            $opratorAsObject = new TourOperator($operatorData);
-            array_push($allOperatorsAsObjects, $opratorAsObject);
-        }
-        
-        return $allOperatorsAsObjects; 
+    $allOperatorsAsObjects = [];        
+    
+    foreach ($allOperatorsData as $operatorData) {
+        $opratorAsObject = new TourOperator($operatorData);
+        array_push($allOperatorsAsObjects, $opratorAsObject);
+    }
+    
+    return $allOperatorsAsObjects; 
   }
 
-  public function getTourOperatorScore (int $tour_operator_id){
+  public function getTourOperatorScore(int $tour_operator_id){
     $query = $this->db->prepare(' SELECT AVG(value)
                                   FROM score
                                   WHERE tour_operator_id = :tour_operator_id');
@@ -58,7 +59,11 @@ class Manager {
         
     $tourOperatorScore = $query->fetch(PDO::FETCH_ASSOC); 
 
-    return intval($tourOperatorScore['AVG(value)']*10)/10; 
+    if ($tourOperatorScore['AVG(value)'] != 0){
+      return intval($tourOperatorScore['AVG(value)']*10)/10;
+    } else {
+      return "aucune evaluation";
+    }
   }
 
   public function getAllLocations(){
@@ -110,12 +115,29 @@ class Manager {
     return $allReviewsAsObjects;
   }
 
+  public function updateOperatorDatas(array $operator_datas){
+    $query = $this->db->prepare('   UPDATE tour_operator 
+                                    SET name=:name, link=:link, premium_status=:premium_status
+                                    WHERE id = :id');
+
+    $query->execute([ 'id' => $operator_datas['update_operator_id'],
+                      'name' => $operator_datas['name'],
+                      'link' => $operator_datas['link'],
+                      'premium_status' => $operator_datas['premium_status']]);
+  }
+
   public function updateOperatorToPremium(int $tour_operator_id){
     $query = $this->db->prepare('   UPDATE tour_operator 
                                     SET premium_status = 1 
                                     WHERE id = :tour_operator_id');
 
     $query->execute(['tour_operator_id' => $tour_operator_id]);
+  }
+
+  public function deleteTourOperator(int $tour_operator_id){
+    $query = $this->db->prepare(' DELETE FROM tour_operator 
+                                  WHERE id = :tour_operator_id');
+    $query->execute([   'tour_operator_id' => $tour_operator_id]); 
   }
 
 
