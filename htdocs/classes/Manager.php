@@ -96,7 +96,7 @@ class Manager {
   }
 
   public function getReviewsForTourOperator(int $tour_operator_id){
-    $query = $this->db->prepare(' SELECT review.message, author.name
+    $query = $this->db->prepare(' SELECT review.message, review.author_id, author.name
                                   FROM review
                                   INNER JOIN author
                                   ON review.author_id = author.id

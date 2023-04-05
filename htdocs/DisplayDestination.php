@@ -43,7 +43,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
           </h4>
 
           <h4>
-            Tour Opérateur : <?= $tourOperator->getName() ?> <?= $manager->getTourOperatorScore($tour_operator_id) ?>
+            Tour Opérateur : <?= $tourOperator->getName() ?>
           </h4>
 
           <p>
@@ -52,6 +52,10 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
                 <?php else : ?>
                   Evaluation : <?=$manager->getTourOperatorScore($tour_operator_id)?> 
                 <?php endif ?>
+          </p>
+
+          <p id="reviewsButton<?=$tour_operator_id?>" class="text-decoration-underline" style="font-size:0.8rem; cursor:pointer;">
+            COMMENTAIRES <i class="reviewsArrow<?=$tour_operator_id?> fa-solid fa-arrow-down" style="color: #e7bd35; "></i>
           </p>
 
 
@@ -66,9 +70,9 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 
     </div>
-    <div class="d-flex justify-content-center align-content-center text-align-center">
+    <div id="reviewsDiv<?=$tour_operator_id?>" class="justify-content-center align-content-center text-align-center" style="display:none">
 
-      <article class="leaderboard">
+      <article class="leaderboard ">
         <header>
 
           <h1 class="leaderboard__title"><span class="leaderboard__title--top">Review</span><span class="leaderboard__title--bottom">Clients</span></h1>
@@ -77,7 +81,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
         <?php foreach ($manager->getReviewsForTourOperator($tour_operator_id) as $review) : ?>
           <main class="leaderboard__profiles">
             <article class="leaderboard__profile">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
+              <img src="https://randomuser.me/api/portraits/men/<?= $review->getAuthor_id() ?>.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
               <span class="leaderboard__name"><?= $review->getMessage() ?></span>
               <span class="leaderboard__value"><span></span><?= $review->getAuthor() ?></span>
             </article>
@@ -89,6 +93,9 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
   <?php endforeach; ?>
 
+
+
 </body>
 
+  <script src="./js/reviewsDisplay.js"></script>
 </html>
