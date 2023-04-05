@@ -106,14 +106,25 @@ if (isset($_GET)){
           <?php foreach($allOperators as $operator) : ?>
 
             <li class="border border-secondary m-1">
+              
               <h4 class="">
                 <?= $operator->getName() ?>
                 <?= $operator->getPremium_status()==1? "<i class='fa-solid fa-star' style='color: #d6a800;' title='Premium'></i>" : "" ?>
               </h4>
+
               <p>
                 <a href="<?= $operator->getLink() ?>"><?= $operator->getLink() ?></a>
               </p>
-              <p>Note : <?=$manager->getTourOperatorScore($operator->getId())?></p>
+
+              <p>
+                <?php if($manager->getTourOperatorScore($operator->getId()) != 'aucune evaluation') : ?>
+                Note : <?=ranking($manager->getTourOperatorScore($operator->getId()))?>
+                <?php else : ?>
+                <?=$manager->getTourOperatorScore($operator->getId())?> 
+                <?php endif ?>
+              </p>
+
+                
               <p class="text-end">
                 <i class="fa-solid fa-trash btn cursor-pointer" style="color: #ff4000;" title="Supprimer" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $operator->getId() ?>"></i>
 
