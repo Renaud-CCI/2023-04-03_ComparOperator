@@ -27,9 +27,25 @@ $twilightorange: #d7495e;
 //!!!!!!!!!!!
 
 body {
-    background-image: url("/htdocs/images/Sea\ of\ Clouds.svg");
+    background-image: url("../images/Sea\ of\ Clouds.svg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px $twilightorange;
+    background-color: $twilightorange;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+    background-color: $sandyellow;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $sandyellow;
+    border: black;
+    border-radius: 10px;
 }
 
 .container {
