@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100%;
-    margin: 5%;
+    margin: 1%;
 }
 
 .leaderboard {
@@ -13,6 +13,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-bottom: 5%;
 
     header {
         --start: 15%;
@@ -131,4 +132,10 @@
 
 .leaderboard {
     box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+    .containerDestination {
+        margin: 5%;
+    }
 }

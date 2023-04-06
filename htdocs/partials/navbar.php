@@ -36,13 +36,13 @@
         <button class="cn-button" id="cn-button">Menu</button>
         <div class="cn-wrapper" id="cn-wrapper">
             <ul>
+                <li><a href="chill.php"><span>Chill</span></a></li>
+                <li><a href="login.php"><span>random</span></a></li>
                 <li><a href="register.php"><span>Register</span></a></li>
+                <li><a href="index.php"><span>Index</span></a></li>
                 <li><a href="login.php"><span>LogIn</span></a></li>
-                <li><a href="#"><span>holder</span></a></li>
-                <li><a href="index.php"><span>Acceuil</span></a></li>
-                <li><a href="#"><span>Plugins</span></a></li>
-                <li><a href="#"><span>Contact</span></a></li>
-                <li><a href="#"><span>Follow</span></a></li>
+                <li><a href="contact.php"><span>Contact</span></a></li>
+                <li><a href="#"><span>Log Out</span></a></li>
             </ul>
         </div>
     </div>

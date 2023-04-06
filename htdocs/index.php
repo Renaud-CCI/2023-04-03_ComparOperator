@@ -6,10 +6,11 @@ $manager = new Manager($db);
 
 
 
+
 //redirection de /admin vers ./admin.php
 if (strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
-  header('Location: admin.php');
-  exit();
+    header('Location: admin.php');
+    exit();
 }
 
 $allLocations = $manager->getAllLocations();
@@ -65,5 +66,3 @@ $allLocations = $manager->getAllLocations();
 
 
 </html>
-
-
