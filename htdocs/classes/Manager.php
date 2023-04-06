@@ -117,6 +117,18 @@ class Manager {
     return $allDestinationsAsObjects; 
   }
 
+  public function getDestinationForTourOperator(string $location, int $tour_operator_id){
+    $query = $this->db->prepare(' SELECT *
+                                  FROM destination
+                                  WHERE location = :location AND tour_operator_id = :tour_operator_id');
+    $query->execute([ 'location' => $location,
+                      'tour_operator_id' => $tour_operator_id]);                            
+    $destination = new Destination($query->fetch(PDO::FETCH_ASSOC));
+
+    return $destination;
+
+  }
+
   public function getReviewsForTourOperator(int $tour_operator_id){
     $query = $this->db->prepare(' SELECT review.message, review.author_id, author.name
                                   FROM review
