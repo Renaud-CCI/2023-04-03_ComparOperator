@@ -5,6 +5,11 @@ require_once("./partials/functions.php");
 $db = require_once("./config/db.php");
 $manager = new Manager($db);
 
+if (isset($_POST['message'])){
+  $manager->createMessageInDB($_POST);
+  $manager->createValueInDb($_POST);
+}
+
 $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 ?>
@@ -42,7 +47,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 
           <h4>
-            Prix : <?= $destination->getPrice() ?>
+            Prix : <?= $destination->getPrice() ?> €
           </h4>
 
           <h4>
@@ -74,33 +79,39 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
     </div>
     <div id="reviewsDiv<?= $tour_operator_id ?>" class="justify-content-center align-content-center text-align-center" style="display:none">
+      
+    <article class="leaderboard ">
+      <header>
+        
+        <h1 class="leaderboard__title"><span class="leaderboard__title--top">Review</span><span class="leaderboard__title--bottom">Clients</span></h1>
+      </header>
+      
+      <card>
 
-      <article class="leaderboard ">
-        <header>
+        <?php require_once('./partials/letComment.php') ?>
 
-          <h1 class="leaderboard__title"><span class="leaderboard__title--top">Review</span><span class="leaderboard__title--bottom">Clients</span></h1>
-        </header>
-
-        <card>
-          <ul>
-            <?php foreach ($manager->getReviewsForTourOperator($tour_operator_id) as $review) : ?>
-              <main class="leaderboard__profiles">
-                <article class="leaderboard__profile">
-                  <img src="https://randomuser.me/api/portraits/men/<?= $review->getAuthor_id() ?>.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
-                  <span class="leaderboard__name"><?= $review->getMessage() ?></span>
-                  <span class="leaderboard__value"><span></span><?= $review->getAuthor() ?></span>
-                </article>
-
-              </main>
-            <?php endforeach; ?>
-          </ul>
-          <br>
-        </card>
+        <ul>
+          <?php foreach ($manager->getReviewsForTourOperator($tour_operator_id) as $review) : ?>
+            <main class="leaderboard__profiles">
+              <article class="leaderboard__profile">
+                <img src="https://randomuser.me/api/portraits/men/<?= $review->getAuthor_id() ?>.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
+                <span class="leaderboard__name"><?= $review->getMessage() ?></span>
+                <span class="leaderboard__value"><span></span><?= $review->getAuthor() ?></span>
+              </article>
+            </main>
+          <?php endforeach; ?>
+        </ul>
+        <br>
+      </card>
       </article>
     </div>
-  <?php endforeach; ?>
+          <?php endforeach; ?>
+          
+          
 
 
+  
+      
 
 </body>
 <script src="./js/reviewsDisplay.js"></script>

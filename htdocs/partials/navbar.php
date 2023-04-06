@@ -39,10 +39,10 @@
                 <li><a href="../register.php"><span>Register</span></a></li>
                 <li><a href="login.php"><span>LogIn</span></a></li>
                 <li><a href="#"><span>holder</span></a></li>
-                <li><a href="index.php"><span>Acceuil</span></a></li>
+                <li><a href="index.php"><span>Accueil</span></a></li>
                 <li><a href="#"><span>Plugins</span></a></li>
                 <li><a href="#"><span>Contact</span></a></li>
-                <li><a href="#"><span>Follow</span></a></li>
+                <li><a href="../traitments/disconnection.php"><span>log out</span></a></li>
             </ul>
         </div>
     </div>

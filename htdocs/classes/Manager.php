@@ -30,6 +30,22 @@ class Manager {
     $query->execute(['name' => $name]);    
   }
 
+  public function createMessageInDB(array $data){
+    $query = $this->db->prepare('   INSERT INTO review (message, tour_operator_id, author_id)
+                                    VALUES (:message, :tour_operator_id, :author_id)');
+    $query->execute([ 'message' => $data['message'],
+                      'tour_operator_id' => $data['tour_operator_id'],
+                      'author_id' => $data['author_id']]); 
+  }
+
+  public function createValueInDB(array $data){
+    $query = $this->db->prepare('   INSERT INTO score (value, tour_operator_id, author_id)
+                                    VALUES (:value, :tour_operator_id, :author_id)');
+    $query->execute([ 'value' => $data['value'],
+                      'tour_operator_id' => $data['tour_operator_id'],
+                      'author_id' => $data['author_id']]); 
+  }
+
   public function getTour_operator(int $tour_operator_id){
     $query = $this->db->prepare(' SELECT *
                                   FROM tour_operator
@@ -119,6 +135,18 @@ class Manager {
     }
 
     return $allReviewsAsObjects;
+  }
+
+  public function getUserReviewForOperator(int $author_id, int $tour_operator_id){
+    $query = $this->db->prepare(' SELECT *
+                                  FROM review
+                                  WHERE author_id = :author_id AND tour_operator_id = :tour_operator_id');
+    $query->execute([ 'tour_operator_id' => $tour_operator_id,
+                      'author_id' => $author_id]);
+        
+    $review = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $review;
   }
 
   public function getUserByName(string $name){

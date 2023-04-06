@@ -152,36 +152,7 @@ if (isset($_GET)){
                 </p>
               </div>
 
-              <!-- Modal data-bs-toggle="modal" data-bs-target="#updateModal<?= $operator->getId() ?>"-->
-              <div class="modal fade" id="updateModal<?= $operator->getId() ?>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier <?= $operator->getName() ?></h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form action="./admin.php" method="get">
-                        <input type="hidden" name="update_operator_id" value="<?= intval($operator->getId()) ?>">
-
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" placeholder="<?= $operator->getName() ?>" value="<?= $operator->getName() ?>">
-                        <br>
-                        <label for="link">Lien :</label>
-                        <input type="text" id="link" name="link" placeholder="<?= $operator->getLink() ?>" value="<?= $operator->getLink() ?>">
-                        <br>
-                        <label>Premium ?</label>
-                        <input type="radio" name="premium_status" value="1" <?= $operator->getPremium_status()==1?'checked' : '' ?> id="oui">
-                        <label for="oui">Oui</label>
-                        <input type="radio" name="premium_status" value="0" <?= $operator->getPremium_status()==1?'' : 'checked' ?> id="non">
-                        <label for="non">Non</label>
-                        <br>
-                        <button type="submit">Modifier</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
 
               <div class="modal fade" id="deleteModal<?= $operator->getId() ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
