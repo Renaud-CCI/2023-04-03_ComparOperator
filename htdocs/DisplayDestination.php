@@ -22,6 +22,9 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 </head>
 
 <body>
+
+  <?php require_once("./partials/navbar.php") ?>
+
   <div class="d-flex justify-content-center m-5">
     <h1 class="text-sandyellow"> Voyages vers <?= $_GET['location'] ?>:</h1>
   </div>
@@ -47,15 +50,15 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
           </h4>
 
           <p>
-          <?php if($manager->getTourOperatorScore($tour_operator_id) != 'aucune evaluation') : ?>
-                Evaluation : <?=ranking($manager->getTourOperatorScore($tour_operator_id))?>
-                <?php else : ?>
-                  Evaluation : <?=$manager->getTourOperatorScore($tour_operator_id)?> 
-                <?php endif ?>
+            <?php if ($manager->getTourOperatorScore($tour_operator_id) != 'aucune evaluation') : ?>
+              Evaluation : <?= ranking($manager->getTourOperatorScore($tour_operator_id)) ?>
+            <?php else : ?>
+              Evaluation : <?= $manager->getTourOperatorScore($tour_operator_id) ?>
+            <?php endif ?>
           </p>
 
-          <p id="reviewsButton<?=$tour_operator_id?>" class="text-decoration-underline" style="font-size:0.8rem; cursor:pointer;">
-            COMMENTAIRES <i class="reviewsArrow<?=$tour_operator_id?> fa-solid fa-arrow-down" style="color: #e7bd35; "></i>
+          <p id="reviewsButton<?= $tour_operator_id ?>" class="text-decoration-underline" style="font-size:0.8rem; cursor:pointer;">
+            COMMENTAIRES <i class="reviewsArrow<?= $tour_operator_id ?> fa-solid fa-arrow-down" style="color: #e7bd35; "></i>
           </p>
 
 
@@ -70,7 +73,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 
     </div>
-    <div id="reviewsDiv<?=$tour_operator_id?>" class="justify-content-center align-content-center text-align-center" style="display:none">
+    <div id="reviewsDiv<?= $tour_operator_id ?>" class="justify-content-center align-content-center text-align-center" style="display:none">
 
       <article class="leaderboard ">
         <header>
@@ -78,24 +81,28 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
           <h1 class="leaderboard__title"><span class="leaderboard__title--top">Review</span><span class="leaderboard__title--bottom">Clients</span></h1>
         </header>
 
-        <?php foreach ($manager->getReviewsForTourOperator($tour_operator_id) as $review) : ?>
-          <main class="leaderboard__profiles">
-            <article class="leaderboard__profile">
-              <img src="https://randomuser.me/api/portraits/men/<?= $review->getAuthor_id() ?>.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
-              <span class="leaderboard__name"><?= $review->getMessage() ?></span>
-              <span class="leaderboard__value"><span></span><?= $review->getAuthor() ?></span>
-            </article>
+        <card>
+          <ul>
+            <?php foreach ($manager->getReviewsForTourOperator($tour_operator_id) as $review) : ?>
+              <main class="leaderboard__profiles">
+                <article class="leaderboard__profile">
+                  <img src="https://randomuser.me/api/portraits/men/<?= $review->getAuthor_id() ?>.jpg" alt="Mark Zuckerberg" class="leaderboard__picture">
+                  <span class="leaderboard__name"><?= $review->getMessage() ?></span>
+                  <span class="leaderboard__value"><span></span><?= $review->getAuthor() ?></span>
+                </article>
 
-          </main>
-        <?php endforeach; ?>
+              </main>
+            <?php endforeach; ?>
+          </ul>
+          <br>
+        </card>
       </article>
     </div>
-
   <?php endforeach; ?>
 
 
 
 </body>
+<script src="./js/reviewsDisplay.js"></script>
 
-  <script src="./js/reviewsDisplay.js"></script>
 </html>

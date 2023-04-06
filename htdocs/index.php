@@ -27,18 +27,21 @@ $allLocations = $manager->getAllLocations();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <title>ComparOperator</title>
+    <title>Sunset</title>
 </head>
 
 <body>
+
+    <?php require_once('./partials/navbar.php') ?>
+
     <div class="container overflow-hidden">
         <div class="screen">
             <div class="screen__content">
                 <div class="text-center">
-                    <h2 class="pt-4">Welcome on <span class="fancy mb-4">ComparOperator</span></h2>
+                    <h2 class="pt-4">Welcome on <span class="fancy mb-4">Sunset</span></h2>
                 </div>
 
-                <div class="destination mt-5 mb-5">
+                <div class="destination mt-5 mb-5 d-flex flex-column">
                     <?php require_once("./partials/locationsForm.php"); ?>
                 </div>
 
@@ -52,6 +55,8 @@ $allLocations = $manager->getAllLocations();
             </div>
         </div>
     </div>
+
+    <?php require_once("./partials/footer.php")  ?>
 
 </body>
 
