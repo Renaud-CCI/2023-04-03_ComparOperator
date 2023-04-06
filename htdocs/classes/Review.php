@@ -3,7 +3,8 @@ class Review{
 
    private int $id;
    private string $message;
-   private $author;
+   private string $author;
+   private int $author_id;
 
   public function __construct(array $data){
     $this->hydrate($data);
@@ -60,5 +61,14 @@ class Review{
       return $this;
    }
 
+   public function getAuthor_id(){
+      return $this->author_id;
+   }
+
+   public function setAuthor_id($author_id){
+      $this->author_id = $author_id;
+
+      return $this;
+   }
 }
 ?>

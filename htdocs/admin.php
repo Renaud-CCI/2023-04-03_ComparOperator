@@ -88,7 +88,7 @@ if (isset($_GET)){
                   <input type="radio" name="premium_status" value="0" id="non" required>
                   <label for="non">Non</label>
                   <br>
-                  <button type="submit">Modifier</button>
+                  <button type="submit">Ajouter</button>
                 </form>
               </div>
             </div>
@@ -106,21 +106,53 @@ if (isset($_GET)){
           <?php foreach($allOperators as $operator) : ?>
 
             <li class="border border-secondary m-1">
-              <h4 class="">
-                <?= $operator->getName() ?>
-                <?= $operator->getPremium_status()==1? "<i class='fa-solid fa-star' style='color: #d6a800;' title='Premium'></i>" : "" ?>
-              </h4>
-              <p>
-                <a href="<?= $operator->getLink() ?>"><?= $operator->getLink() ?></a>
-              </p>
-              <p>Note : <?=$manager->getTourOperatorScore($operator->getId())?></p>
-              <p class="text-end">
-                <i class="fa-solid fa-trash btn cursor-pointer" style="color: #ff4000;" title="Supprimer" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $operator->getId() ?>"></i>
 
-                <i class="fa-solid fa-pencil btn cursor-pointer" style="color: #39f346;" title="Editer" data-bs-toggle="modal" data-bs-target="#updateModal<?= $operator->getId() ?>"></i>
-              </p>
-              
-              <!-- Modal -->
+              <form id="updateOperatorForm<?=$operator->getId()?>" action="./admin.php" method="get" style="display:none">
+                <input type="hidden" name="update_operator_id" value="<?= intval($operator->getId()) ?>">
+
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" placeholder="<?= $operator->getName() ?>" value="<?= $operator->getName() ?>">
+                <br>
+                <label for="link">Lien :</label>
+                <input type="text" id="link" name="link" placeholder="<?= $operator->getLink() ?>" value="<?= $operator->getLink() ?>">
+                <br>
+                <label>Premium ?</label>
+                <input type="radio" name="premium_status" value="1" <?= $operator->getPremium_status()==1?'checked' : '' ?> id="oui">
+                <label for="oui">Oui</label>
+                <input type="radio" name="premium_status" value="0" <?= $operator->getPremium_status()==1?'' : 'checked' ?> id="non">
+                <label for="non">Non</label>
+                <br>
+                <button type="submit">Modifier</button>
+                <button id="updateOperatorFormCancelButton<?=$operator->getId()?>" type="">Annuler</button>
+              </form>
+
+              <div id="operatorDiv<?=$operator->getId()?>" style="display:block">
+                <h4 class="">
+                  <?= $operator->getName() ?>
+                  <?= $operator->getPremium_status()==1? "<i class='fa-solid fa-star' style='color: #d6a800;' title='Premium'></i>" : "" ?>
+                </h4>
+
+                <p>
+                  <a href="<?= $operator->getLink() ?>"><?= $operator->getLink() ?></a>
+                </p>
+
+                <p>
+                  <?php if($manager->getTourOperatorScore($operator->getId()) != 'aucune evaluation') : ?>
+                  Note : <?=ranking($manager->getTourOperatorScore($operator->getId()))?>
+                  <?php else : ?>
+                  <?=$manager->getTourOperatorScore($operator->getId())?> 
+                  <?php endif ?>
+                </p>
+
+                  
+                <p class="text-end">
+                  <span><i class="fa-solid fa-trash btn cursor-pointer" style="color: #ff4000;" title="Supprimer" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $operator->getId() ?>"></i></span>
+
+                  <span id="updateIcon<?=$operator->getId()?>"><i class="fa-solid fa-pencil btn cursor-pointer" style="color: #39f346;" title="Editer" ></i></span>
+                </p>
+              </div>
+
+              <!-- Modal data-bs-toggle="modal" data-bs-target="#updateModal<?= $operator->getId() ?>"-->
               <div class="modal fade" id="updateModal<?= $operator->getId() ?>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -258,5 +290,6 @@ if (isset($_GET)){
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-<script src="/htdocs/js/login.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/adminUpdateForm.js"></script>
 </html>
