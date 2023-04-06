@@ -36,7 +36,7 @@
         <button class="cn-button" id="cn-button">Menu</button>
         <div class="cn-wrapper" id="cn-wrapper">
             <ul>
-                <li><a href="register.php"><span>Register</span></a></li>
+                <li><a href="../register.php"><span>Register</span></a></li>
                 <li><a href="login.php"><span>LogIn</span></a></li>
                 <li><a href="#"><span>holder</span></a></li>
                 <li><a href="index.php"><span>Acceuil</span></a></li>

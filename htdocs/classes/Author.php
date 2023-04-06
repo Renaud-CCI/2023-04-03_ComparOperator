@@ -2,7 +2,8 @@
 class Author{
 
   private int $id;
-  private string $name;  
+  private string $name;
+  private int $is_admin; 
     
 
   public function __construct(array $data){
@@ -44,6 +45,16 @@ class Author{
 
   public function setName($name){
     $this->name = $name;
+
+    return $this;
+  }
+
+  public function getIs_admin(){
+    return $this->is_admin;
+  }
+
+  public function setIs_admin($is_admin){
+    $this->is_admin = $is_admin;
 
     return $this;
   }

@@ -6,9 +6,10 @@ $manager = new Manager($db);
 
 
 
+
 //redirection de /admin vers ./admin.php
 if (strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
-  header('Location: admin.php');
+  header('Location: ./admin.php');
   exit();
 }
 

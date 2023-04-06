@@ -24,6 +24,12 @@ class Manager {
                       'tour_operator_id' => $destination_datas['tour_operator_id']]);
   }
 
+  public function createUserInDB(string $name){
+    $query = $this->db->prepare('   INSERT INTO author (name)
+                                    VALUES (:name)');
+    $query->execute(['name' => $name]);    
+  }
+
   public function getTour_operator(int $tour_operator_id){
     $query = $this->db->prepare(' SELECT *
                                   FROM tour_operator
@@ -114,6 +120,19 @@ class Manager {
 
     return $allReviewsAsObjects;
   }
+
+  public function getUserByName(string $name){
+    $query = $this->db->prepare('SELECT * FROM author WHERE LOWER(name) = :name ');
+    $query->execute(['name' => strtolower($name)]);
+    
+    $userData = $query->fetch(); 
+
+    if ($userData){
+        $user = new Author($userData);
+        return $user;
+    }
+    
+}
 
   public function updateOperatorDatas(array $operator_datas){
     $query = $this->db->prepare('   UPDATE tour_operator 
