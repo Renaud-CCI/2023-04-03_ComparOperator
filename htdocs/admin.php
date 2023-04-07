@@ -73,13 +73,13 @@ if (isset($_GET)) {
 
   <h1 class="text-center text-twilightorange m-5">Admin Page</h1>
 
-  <section id="listsContainer" class="container d-flex align-items-start">
+  <section id="listsContainer" class="container row  col-sm-12 align-items-center">
 
-    <section id="operatorSection" class="col col-6 text-center text-twilightorange">
+    <section id="operatorSection" class="col-sm-12 text-center text-twilightorange align-items-center">
       <h2>Tour Operators</h2>
 
       <div id="chooseActionDiv" class="row d-flex justify-content-center-center mt-5 mb-3">
-        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un Tour Operator</button>
+        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Operator</button>
 
         <!-- Modal -->
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -118,7 +118,7 @@ if (isset($_GET)) {
       </div>
 
 
-      <div id="operatorsList">
+      <div id="operatorsList" class="align-items-center text-align-center justify-content-center">
 
         <ul class="list-unstyled">
           <?php foreach ($allOperators as $operator) : ?>
@@ -199,7 +199,7 @@ if (isset($_GET)) {
 
     </section>
 
-    <section id="destinationsSection" class="col col-6 text-center">
+    <section id="destinationsSection" class=" text-center">
 
       <h2 class="text-twilightorange">Voyages</h2>
 
@@ -208,7 +208,7 @@ if (isset($_GET)) {
       </div>
 
       <div id="chooseActionDiv" class="row d-flex justify-content-center mt-5 mb-3">
-        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#createDestinationModal">Ajouter un nouveau voyage</button>
+        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#createDestinationModal">Add voyage</button>
 
         <!-- Modal -->
         <div class="modal fade text-twilightorange" id="createDestinationModal" tabindex="-1" aria-labelledby="createDestinationModalLabel" aria-hidden="true">

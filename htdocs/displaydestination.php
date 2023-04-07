@@ -14,10 +14,6 @@ if (isset($_POST['message'])) {
 
 $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
-if (isset($_POST['message'])) {
-  $manager->createMessageInDB($_POST);
-  $manager->createValueInDb($_POST);
-}
 ?>
 
 <!DOCTYPE html>
