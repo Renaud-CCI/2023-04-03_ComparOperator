@@ -14,7 +14,6 @@ if (isset($_POST['message'])) {
 
 $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
-
 ?>
 
 <!DOCTYPE html>
