@@ -19,6 +19,10 @@
     box-shadow: 10px 12px 24px black;
 }
 
+.transparencybg {
+    background-color: rgba(0, 0, 0, 0.247);
+    opacity: 0, 3;
+}
 .screen__content2 {
     z-index: 1;
     position: relative;

@@ -2,13 +2,22 @@
 require_once("./config/autoload.php");
 require_once("./config/prettyDump.php");
 require_once("./partials/functions.php");
-var_dump($_SERVER['REQUEST_URI']);
+
 $_SESSION['last_visited_page'] = $_SERVER['REQUEST_URI'];
 $db = require_once("./config/db.php");
 $manager = new Manager($db);
 
+if (isset($_POST['message'])) {
+  $manager->createMessageInDB($_POST);
+  $manager->createValueInDb($_POST);
+}
+
 $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
+if (isset($_POST['message'])) {
+  $manager->createMessageInDB($_POST);
+  $manager->createValueInDb($_POST);
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +48,8 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
     ?>
 
     <div class="containerDestination overflow-hidden">
-      <div class="screen">
-        <div class="screen__content p-5 mt-5 mb-5 text-sandyellow">
+      <div class="screenDestination">
+        <div class="screenDestination__content p-5 mt-5 mb-5 text-sandyellow">
 
 
           <h4>
@@ -59,10 +68,19 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
             <?php endif ?>
           </p>
 
-          <p id="reviewsButton<?= $tour_operator_id ?>" class="text-decoration-underline" style="font-size:0.8rem; cursor:pointer;">
+          <button id="reviewsButton<?= $tour_operator_id ?>" class="btn bg-twilightorange text-sandyellow" style="font-size:0.8rem; cursor:pointer;">
             COMMENTAIRES <i class="reviewsArrow<?= $tour_operator_id ?> fa-solid fa-arrow-down" style="color: #e7bd35; "></i>
-          </p>
+          </button>
 
+          <div class="text-end">
+            <form action="./journeyDetail.php" method="get">
+              <input type="hidden" name="location" value="<?= $_GET['location'] ?>">
+              <input type="hidden" name="tour_operator_id" value="<?= $tour_operator_id ?>">
+              <button class="btn border-seablue bg-sandyellow text-seablue">
+                + d'infos
+              </button>
+            </form>
+          </div>
 
         </div>
         <div class="screen__background">
@@ -97,10 +115,14 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
             <?php endforeach; ?>
           </ul>
           <br>
+          <?php require("./partials/letComment.php")  ?>
         </card>
       </article>
     </div>
   <?php endforeach; ?>
+
+
+  <?php require_once("./partials/footer.php"); ?>
 
 
 

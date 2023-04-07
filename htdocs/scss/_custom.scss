@@ -32,6 +32,10 @@ body {
     background-size: cover;
 }
 
+*::placeholder {
+    color: $sandyellow;
+}
+
 body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px $twilightorange;
     background-color: $twilightorange;
@@ -52,7 +56,6 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
 
 .logo-div {
@@ -216,6 +219,7 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     letter-spacing: 2px;
     transition: all 0.375s;
+    box-shadow: 10px 12px 24px black;
 }
 
 .social-login {
@@ -247,7 +251,10 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 900px) {
     .screen {
         height: 100%;
-        width: 60%;
+        width: 100%;
+    }
+    .login {
+        width: 100%;
     }
 }
 
