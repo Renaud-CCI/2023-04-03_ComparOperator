@@ -7,6 +7,11 @@ $_SESSION['last_visited_page'] = $_SERVER['REQUEST_URI'];
 $db = require_once("./config/db.php");
 $manager = new Manager($db);
 
+if (isset($_POST['message'])) {
+  $manager->createMessageInDB($_POST);
+  $manager->createValueInDb($_POST);
+}
+
 $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 if (isset($_POST['message'])) {
@@ -67,6 +72,15 @@ if (isset($_POST['message'])) {
             COMMENTAIRES <i class="reviewsArrow<?= $tour_operator_id ?> fa-solid fa-arrow-down" style="color: #e7bd35; "></i>
           </button>
 
+          <div class="text-end">
+            <form action="./journeyDetail.php" method="get">
+              <input type="hidden" name="location" value="<?= $_GET['location'] ?>">
+              <input type="hidden" name="tour_operator_id" value="<?= $tour_operator_id ?>">
+              <button class="btn border-seablue bg-sandyellow text-seablue">
+                + d'infos
+              </button>
+            </form>
+          </div>
 
         </div>
         <div class="screen__background">
