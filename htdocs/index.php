@@ -16,7 +16,6 @@ if (strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
 $allLocations = $manager->getAllLocations();
 
 
-
 ?>
 
 
@@ -34,6 +33,9 @@ $allLocations = $manager->getAllLocations();
 <body>
 
     <?php require_once('./partials/navbar.php') ?>
+
+    <?php require_once('./partials/carousel.php') ?>
+    
     <div class="p-5"></div>
 
     <div class="container overflow-hidden">
@@ -65,6 +67,6 @@ $allLocations = $manager->getAllLocations();
 
 <script src="./js/indexButton.js"></script>
 <script src="./js/delayFunction.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </html>

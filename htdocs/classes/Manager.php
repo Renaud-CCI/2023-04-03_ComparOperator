@@ -174,6 +174,22 @@ class Manager {
     
 }
 
+public function getThreeRandomDestinations(){
+  $query = $this->db->query(' SELECT *
+                                FROM destination
+                                LIMIT 3');                         
+  $allDestinationsDatas = $query->fetchAll(PDO::FETCH_ASSOC); 
+
+  $allDestinationsAsObjects = [];        
+  
+  foreach ($allDestinationsDatas as $destinationDatas) {
+      $destinationAsObject = new Destination($destinationDatas);
+      array_push($allDestinationsAsObjects, $destinationAsObject);
+  }
+  
+  return $allDestinationsAsObjects; 
+}
+
   public function updateOperatorDatas(array $operator_datas){
     $query = $this->db->prepare('   UPDATE tour_operator 
                                     SET name=:name, link=:link, premium_status=:premium_status
