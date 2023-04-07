@@ -23,5 +23,101 @@ function ranking(float $note){
 }
 
 
+$randomDate = function () {
+  $days = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 30, 40, 50];
+  $hours = [0, 2, 4, 6, 12, 18];
+  return date('d/m/Y', time()+((3600*24*$days[array_rand($days)])+(3600*$hours[array_rand($hours)])));
+};
+
+
+
+$randomDuration = function(){
+  $duration = [4, 5, 6, 7, 8, 10];
+  return $duration[array_rand($duration)];
+};
+
+
+
+$randomSites = function(){
+  $sites = [
+    "Place de l'Hotel de Ville",
+    "Cimetière Anglais",
+    "Cimetière des révolutions",
+    "Eglise noire",
+    "Temple ancien",
+    "Verger partagé",
+    "Rue de la soif",
+    "Place aux trois fontaines",
+    "Place aux Herbes",
+    "Marché couvert",
+    "Marché aux fleurs",
+    "Marché du soleil",
+    "Grandes Halles",
+    "Musée d'Arts Modernes",
+    "Musée des Beaux-Arts",
+    "Musée de la Cravatte",
+    "Musée du Tissage",
+    "Cité des Vieux Metiers",
+    "Jardin botanique",
+    "Zoo des animaux heureux",
+    "Aquarium tropical",
+    "Rue pavée",
+    "Kiosque à musique",
+    "Rues piétonnes",
+    "Rue des artistes",
+    "Vieille porte de ville",
+    "Jardin public",
+    "Place du vieux village",
+    "Ruelles médiévales",
+    "Jardin de roses",
+    "Petit théâtre de quartier"
+  ];
+  shuffle($sites);
+  return array_slice($sites, 0, 5);
+};
+
+
+
+$randomDepartures = function(){
+  $cities = [
+    "Roanne",
+    "Le Coteau",
+    "Mably",
+    "Feurs",
+    "Balbigny",
+    "Villerest",
+    "Renaison",
+    "Riorges",
+    "Charlieu",
+    "Saint Etienne"
+  ];
+  return $cities[array_rand($cities)];
+};
+
+
+
+$randomExtras = function(){
+  $extras = [
+    "Eau gratuite pendant le séjour",
+    "Prêt de pantoufles à l'hotel",
+    "Serviettes de bain sèches",
+    "Savon à l'odeur supportable",
+    "Visites guidées en option",
+    "Minibus assez fiable",
+    "Service de location de VHS",
+    "Brochures touristique sur demande",
+    "Boutiques souvenir",
+    "Discussions possibles",
+    "Aide aux selfies",
+    "Lit à matelas",
+    "Autocollant publicitaire offert",
+    "Wi-Fi probable",
+    "Kebab à proximité",
+    "Location de brosses à dents"
+  ];
+  shuffle($extras);
+  return array_slice($extras, 0, 3);
+};
+
 
 ?>

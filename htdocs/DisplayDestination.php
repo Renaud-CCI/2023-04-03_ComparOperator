@@ -2,6 +2,8 @@
 require_once("./config/autoload.php");
 require_once("./config/prettyDump.php");
 require_once("./partials/functions.php");
+var_dump($_SERVER['REQUEST_URI']);
+$_SESSION['last_visited_page'] = $_SERVER['REQUEST_URI'];
 $db = require_once("./config/db.php");
 $manager = new Manager($db);
 
