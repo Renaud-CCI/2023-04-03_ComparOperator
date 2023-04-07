@@ -5,14 +5,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-blue: #0d6efd;
+  --bs-blue: #080b3d;
   --bs-indigo: #6610f2;
   --bs-purple: #6a4d8a;
   --bs-pink: #d63384;
   --bs-red: #dc3545;
   --bs-orange: #f18b6d;
   --bs-yellow: #ffc107;
-  --bs-green: #198754;
+  --bs-green: #d7495e;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-black: #000;
@@ -25,6 +25,7 @@
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
   --bs-star: #d6a800;
+  --bs-night: #080b3d;
   --bs-gray-100: #f8f9fa;
   --bs-gray-200: #e9ecef;
   --bs-gray-300: #dee2e6;
@@ -34,9 +35,9 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
+  --bs-primary: #080b3d;
   --bs-secondary: #88746e;
-  --bs-success: #198754;
+  --bs-success: #d7495e;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
@@ -50,9 +51,10 @@
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
   --bs-star: #d6a800;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-night: #080b3d;
+  --bs-primary-rgb: 8, 11, 61;
   --bs-secondary-rgb: 136, 116, 110;
-  --bs-success-rgb: 25, 135, 84;
+  --bs-success-rgb: 215, 73, 94;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
   --bs-danger-rgb: 220, 53, 69;
@@ -66,6 +68,7 @@
   --bs-sandyellow-rgb: 231, 189, 53;
   --bs-twilightorange-rgb: 215, 73, 94;
   --bs-star-rgb: 214, 168, 0;
+  --bs-night-rgb: 8, 11, 61;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -89,8 +92,8 @@
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #0d6efd;
-  --bs-link-hover-color: #0a58ca;
+  --bs-link-color: #080b3d;
+  --bs-link-hover-color: #060931;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
@@ -103,7 +106,7 @@
 
 .text-bg-primary {
   color: #fff !important;
-  background-color: RGBA(13, 110, 253, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(8, 11, 61, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-secondary {
@@ -112,8 +115,8 @@
 }
 
 .text-bg-success {
-  color: #fff !important;
-  background-color: RGBA(25, 135, 84, var(--bs-bg-opacity, 1)) !important;
+  color: #000 !important;
+  background-color: RGBA(215, 73, 94, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-info {
@@ -181,11 +184,16 @@
   background-color: RGBA(214, 168, 0, var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-night {
+  color: #fff !important;
+  background-color: RGBA(8, 11, 61, var(--bs-bg-opacity, 1)) !important;
+}
+
 .link-primary {
-  color: #0d6efd !important;
+  color: #080b3d !important;
 }
 .link-primary:hover, .link-primary:focus {
-  color: #0a58ca !important;
+  color: #060931 !important;
 }
 
 .link-secondary {
@@ -196,10 +204,10 @@
 }
 
 .link-success {
-  color: #198754 !important;
+  color: #d7495e !important;
 }
 .link-success:hover, .link-success:focus {
-  color: #146c43 !important;
+  color: #df6d7e !important;
 }
 
 .link-info {
@@ -291,6 +299,13 @@
 }
 .link-star:hover, .link-star:focus {
   color: #deb933 !important;
+}
+
+.link-night {
+  color: #080b3d !important;
+}
+.link-night:hover, .link-night:focus {
+  color: #060931 !important;
 }
 
 .ratio {
@@ -792,6 +807,11 @@
 .border-star {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-star-rgb), var(--bs-border-opacity)) !important;
+}
+
+.border-night {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-night-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-white {
@@ -1700,6 +1720,11 @@
   color: rgba(var(--bs-star-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-night {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-night-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
@@ -1829,6 +1854,11 @@
 .bg-star {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-star-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-night {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-night-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {

@@ -40,6 +40,10 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
             <?= $destination->getLocation() ?>
           </h1>
 
+          <p class="text-center fw-bold">
+            Séjour de <?= $test = $randomDuration() ?> jours, <?= $test-1 ?> nuits
+          </p>
+
           <h4>
             Prix : <?= $destination->getPrice() ?> €
           </h4>
@@ -56,7 +60,27 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
             <?php endif ?>
           </p>
 
-          
+          <p>
+            Départ de <?= $randomDepartures() ?> le <?= $randomDate() ?>
+          </p>
+
+          <div>
+            <strong>Les Incontournables</strong> :
+            <ul>
+              <?php foreach ($randomSites() as $site) : ?>
+                <li><?= $site ?></li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+
+          <div class="text-twilightorange text-shadow">
+            <strong>Extras</strong> :
+            <ul>
+              <?php foreach ($randomExtras() as $extras) : ?>
+                <li><?= $extras ?></li>
+              <?php endforeach ?>
+            </ul>
+          </div>
 
         </div>
         <div class="screen__background">
