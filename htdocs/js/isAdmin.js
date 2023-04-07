@@ -1,6 +1,6 @@
 const div = document.querySelector('#notAdmin');
 
-let decompte = 2;
+let decompte = 3;
 
 const timer = setInterval(function( ){
   div.innerHTML = decompte;

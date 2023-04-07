@@ -16,7 +16,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getIs_admin()!=1){
      <div class='text-center pt-5'>
       <h1 class='text-center text-sandyellow m-5'>Vous n'êtes pas logué en tant qu'Admin</h1>
       <br>
-      <h2 class='text-center text-sandyellow'>Vous allez être redirigé dans <span id='notAdmin'>3</span></h2>
+      <h2 class='text-center text-sandyellow'>Vous allez être redirigé dans <span id='notAdmin'>4</span></h2>
      </div>
   </body>
   <script src='./js/isAdmin.js'></script>
