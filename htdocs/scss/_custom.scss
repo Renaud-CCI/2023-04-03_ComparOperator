@@ -250,3 +250,50 @@ body::-webkit-scrollbar-thumb {
         width: 60%;
     }
 }
+
+
+// Renaud RankingStars Div
+#stars {
+    position: relative;
+  }
+  
+.dummy {
+    display: none !important;
+  }
+  
+  /* The radio buttons still take up space, but are invisible */
+  .star_layer input {
+    opacity: 0;
+  }
+  
+  /* Make everything the right size */
+  .star_layer input, .star_layer label, .star_layer i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+  }
+  
+  /* Position the labels over their associated input elements */
+  .star_layer label {
+    position: absolute;
+    top: 0;
+    margin: 2px 2px 2px -22px;
+    overflow: hidden;
+  }
+  
+  /* Hides the filled stars that appear after the checked radio button */
+  input:checked ~ label > i:first-child {
+    display: none;
+  }
+  
+  /* Explicitly redisplays the filled star for the active radio button */
+  input:checked + label > i:first-child {
+    display: inline-block;
+  }
+  
+  /* Make the filled stars gold... */
+  .fas {
+    color: goldenrod;
+  }
+  

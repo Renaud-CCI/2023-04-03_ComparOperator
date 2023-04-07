@@ -22,22 +22,22 @@ function ranking(float $note){
   return $return;
 }
 
-
+//Fonction pour afficher une date random dans le futur
 $randomDate = function () {
   $days = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 30, 40, 50];
   $hours = [0, 2, 4, 6, 12, 18];
-  return date('d/m/Y', time()+((3600*24*$days[array_rand($days)])+(3600*$hours[array_rand($hours)])));
+  return date('d/m/Y à h\hi', time()+((3600*24*$days[array_rand($days)])+(3600*$hours[array_rand($hours)])));
 };
 
 
-
+// Fonction pour afficher une durée random
 $randomDuration = function(){
   $duration = [4, 5, 6, 7, 8, 10];
   return $duration[array_rand($duration)];
 };
 
 
-
+// Fonction pour afficher des sites incontournables random
 $randomSites = function(){
   $sites = [
     "Place de l'Hotel de Ville",
@@ -77,7 +77,7 @@ $randomSites = function(){
 };
 
 
-
+//Fonction pour afficher un lieu de départ random
 $randomDepartures = function(){
   $cities = [
     "Roanne",
@@ -95,7 +95,7 @@ $randomDepartures = function(){
 };
 
 
-
+//Fonction pour afficher des extras random
 $randomExtras = function(){
   $extras = [
     "Eau gratuite pendant le séjour",
@@ -106,14 +106,16 @@ $randomExtras = function(){
     "Minibus assez fiable",
     "Service de location de VHS",
     "Brochures touristique sur demande",
-    "Boutiques souvenir",
+    "Boutiques souvenirs",
     "Discussions possibles",
     "Aide aux selfies",
     "Lit à matelas",
     "Autocollant publicitaire offert",
     "Wi-Fi probable",
     "Kebab à proximité",
-    "Location de brosses à dents"
+    "Location de brosses à dents",
+    "Bouilloire à disposition",
+    "Rappel SMS du départ"
   ];
   shuffle($extras);
   return array_slice($extras, 0, 3);

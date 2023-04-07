@@ -5,14 +5,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-blue: #0d6efd;
+  --bs-blue: #080b3d;
   --bs-indigo: #6610f2;
   --bs-purple: #6a4d8a;
   --bs-pink: #d63384;
   --bs-red: #dc3545;
   --bs-orange: #f18b6d;
   --bs-yellow: #ffc107;
-  --bs-green: #198754;
+  --bs-green: #d7495e;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-black: #000;
@@ -25,6 +25,7 @@
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
   --bs-star: #d6a800;
+  --bs-night: #080b3d;
   --bs-gray-100: #f8f9fa;
   --bs-gray-200: #e9ecef;
   --bs-gray-300: #dee2e6;
@@ -34,9 +35,9 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
+  --bs-primary: #080b3d;
   --bs-secondary: #88746e;
-  --bs-success: #198754;
+  --bs-success: #d7495e;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
@@ -50,9 +51,10 @@
   --bs-sandyellow: #e7bd35;
   --bs-twilightorange: #d7495e;
   --bs-star: #d6a800;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-night: #080b3d;
+  --bs-primary-rgb: 8, 11, 61;
   --bs-secondary-rgb: 136, 116, 110;
-  --bs-success-rgb: 25, 135, 84;
+  --bs-success-rgb: 215, 73, 94;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
   --bs-danger-rgb: 220, 53, 69;
@@ -66,6 +68,7 @@
   --bs-sandyellow-rgb: 231, 189, 53;
   --bs-twilightorange-rgb: 215, 73, 94;
   --bs-star-rgb: 214, 168, 0;
+  --bs-night-rgb: 8, 11, 61;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -89,8 +92,8 @@
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #0d6efd;
-  --bs-link-hover-color: #0a58ca;
+  --bs-link-color: #080b3d;
+  --bs-link-hover-color: #060931;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
