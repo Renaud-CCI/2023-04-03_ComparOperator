@@ -42,7 +42,7 @@
                 <li><a href="index.php"><span>Index</span></a></li>
                 <li><a href="login.php"><span>LogIn</span></a></li>
                 <li><a href="contact.php"><span>Contact</span></a></li>
-                <li><a href=""><span>Log Out</span></a></li>
+                <li><a href="../traitments/disconnection.php"><span>Log Out</span></a></li>
             </ul>
         </div>
     </div>

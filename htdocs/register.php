@@ -7,20 +7,20 @@ $manager = new Manager($db);
 
 $inscriptionFormText = '';
 
-if (isset ($_POST['name'])){
-    if ($manager->getUserByName($_POST['name'])){
-        $inscriptionFormText = 'Utilisateur déjà connu<br>Connectez-vous';
-    } else{
+if (isset($_POST['name'])) {
+    if ($manager->getUserByName($_POST['name'])) {
+        $inscriptionFormText = '<p class="bg-night">Utilisateur déjà connu<br>Connectez-vous</p>';
+    } else {
         $manager->createUserInDB($_POST['name']);
         $_SESSION['user'] = $manager->getUserByName($_POST['name']);
-        header('Location: '.$_SESSION['lastPage']);
+        header('Location: ' . $_SESSION['lastPage']);
         exit();
     }
 }
 
-if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']){
+if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']) {
     $_SESSION['lastPage'] = $_SERVER['HTTP_REFERER'];
-  }
+}
 
 
 ?>
@@ -49,6 +49,9 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
 </head>
 
 <body>
+    <?php require_once("./partials/navbar.php"); ?>
+
+    <div class="p-5"></div>
 
     <div class="container overflow-hidden">
         <div class="screen">
@@ -87,6 +90,7 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
         </div>
     </div>
 
+    <div class="p-5"></div>
 
     <?php require_once("./partials/footer.php")  ?>
 
@@ -98,4 +102,3 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
 
 
 </html>
-

@@ -34,6 +34,7 @@ $allLocations = $manager->getAllLocations();
 <body>
 
     <?php require_once('./partials/navbar.php') ?>
+    <div class="p-5"></div>
 
     <div class="container overflow-hidden">
         <div class="screen">
@@ -56,6 +57,7 @@ $allLocations = $manager->getAllLocations();
             </div>
         </div>
     </div>
+    <div class="p-5"></div>
 
     <?php require_once("./partials/footer.php")  ?>
 

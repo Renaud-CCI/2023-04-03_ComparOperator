@@ -79,7 +79,7 @@ if (isset($_GET)) {
       <h2>Tour Operators</h2>
 
       <div id="chooseActionDiv" class="row d-flex justify-content-center-center mt-5 mb-3">
-        <button class="w-50 mx-auto btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un Tour Operator</button>
+        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un Tour Operator</button>
 
         <!-- Modal -->
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,10 +95,10 @@ if (isset($_GET)) {
                   <input type="hidden" name="createTourOperator" value="true">
 
                   <label for="name">Nom :</label>
-                  <input type="text" id="name" name="name" placeholder="nom" required>
+                  <input type="text" class="bg-sandyellow text-night" id="name" name="name" placeholder="nom" required>
                   <br>
                   <label for="link">Lien :</label>
-                  <input type="text" id="link" name="link" placeholder="www.lien.com" required>
+                  <input type="text" class="bg-sandyellow text-night" id="link" name="link" placeholder="www.lien.com" required>
                   <br>
                   <label>Premium ?</label>
                   <input type="radio" name="premium_status" value="1" id="oui" required>
@@ -106,7 +106,7 @@ if (isset($_GET)) {
                   <input type="radio" name="premium_status" value="0" id="non" required>
                   <label for="non">Non</label>
                   <br>
-                  <button type="submit" class="btn-primary">Ajouter</button>
+                  <button type="submit" class="btn text-night bg-twilightorange">Ajouter</button>
                 </form>
               </div>
             </div>
@@ -129,19 +129,19 @@ if (isset($_GET)) {
                 <input type="hidden" name="update_operator_id" value="<?= intval($operator->getId()) ?>">
 
                 <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" placeholder="<?= $operator->getName() ?>" value="<?= $operator->getName() ?>">
+                <input type="text" id="name" class="bg-night text-sandyellow" name="name" placeholder="<?= $operator->getName() ?>" value="<?= $operator->getName() ?>">
                 <br>
                 <label for="link">Lien :</label>
-                <input type="text" id="link" name="link" placeholder="<?= $operator->getLink() ?>" value="<?= $operator->getLink() ?>">
+                <input type="text" class="bg-night text-sandyellow" id="link" name="link" placeholder="<?= $operator->getLink() ?>" value="<?= $operator->getLink() ?>">
                 <br>
                 <label>Premium ?</label>
-                <input type="radio" name="premium_status" value="1" <?= $operator->getPremium_status() == 1 ? 'checked' : '' ?> id="oui">
+                <input type="radio" class="bg-night text-sandyellow" name="premium_status" value="1" <?= $operator->getPremium_status() == 1 ? 'checked' : '' ?> id="oui">
                 <label for="oui">Oui</label>
-                <input type="radio" name="premium_status" value="0" <?= $operator->getPremium_status() == 1 ? '' : 'checked' ?> id="non">
+                <input type="radio" class="bg-night text-sandyellow" name="premium_status" value="0" <?= $operator->getPremium_status() == 1 ? '' : 'checked' ?> id="non">
                 <label for="non">Non</label>
                 <br>
-                <button type="submit">Modifier</button>
-                <button id="updateOperatorFormCancelButton<?= $operator->getId() ?>" type="">Annuler</button>
+                <button type="submit" class="btn bg-night text-sandyellow">Modifier</button>
+                <button class="btn bg-night text-sandyellow" id="updateOperatorFormCancelButton<?= $operator->getId() ?>" type="">Annuler</button>
               </form>
 
               <div id="operatorDiv<?= $operator->getId() ?>" style="display:block">
@@ -208,7 +208,7 @@ if (isset($_GET)) {
       </div>
 
       <div id="chooseActionDiv" class="row d-flex justify-content-center mt-5 mb-3">
-        <button class="w-50 mx-auto btn-primary" data-bs-toggle="modal" data-bs-target="#createDestinationModal">Ajouter un nouveau voyage</button>
+        <button class="w-50 mx-auto btn text-sandyellow bg-seablue" data-bs-toggle="modal" data-bs-target="#createDestinationModal">Ajouter un nouveau voyage</button>
 
         <!-- Modal -->
         <div class="modal fade text-twilightorange" id="createDestinationModal" tabindex="-1" aria-labelledby="createDestinationModalLabel" aria-hidden="true">

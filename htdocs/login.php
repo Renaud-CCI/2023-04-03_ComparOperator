@@ -11,21 +11,21 @@ if (isset($_POST['name'])) {
   // Sanitize and validate the user name
   $name = filter_var($_POST['name']);
   if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
-    $connectionFormText = "<p class='erreur text-danger text-center'>Le pseudo ne doit contenir que des lettres, des chiffres et des tirets bas</p>";
+    $connectionFormText = "<p class='erreur text-danger bg-night text-center'>Le pseudo ne doit contenir que des lettres, des chiffres et des tirets bas</p>";
   }
 
   // If name exist redirection to the last page, else error message
   if ($manager->getUserByName($_POST['name'])) {
     $_SESSION['user'] = $manager->getUserByName($_POST['name']);
-        header('Location: '.$_SESSION['lastPage']);
-        exit();
+    header('Location: ' . $_SESSION['lastPage']);
+    exit();
   } else {
-    $connectionFormText = "<p class='erreur text-danger text-center'>Utilisateur inconnu<br>Enregistrez-vous!</p>";
+    $connectionFormText = "<p class='erreur text-danger bg-night text-center'>Utilisateur inconnu<br>Enregistrez-vous!</p>";
   }
 }
 
 
-if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']){
+if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']) {
   $_SESSION['lastPage'] = $_SERVER['HTTP_REFERER'];
 }
 
@@ -54,7 +54,8 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
 
 <body>
 
-
+  <?php require_once("./partials/navbar.php"); ?>
+  <div class="p-5"></div>
 
   <div class="container overflow-hidden">
     <div class="screen">
@@ -86,8 +87,9 @@ if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != $_SERVER['REQUEST_URI']
     </div>
   </div>
 
+  <div class="p-5"></div>
 
-
+  <?php require_once("./partials/footer.php")  ?>
 
 
 </body>
