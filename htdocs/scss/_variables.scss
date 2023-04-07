@@ -36,14 +36,14 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue: #0d6efd !default;
+$blue: #080b3d !default;
 $indigo: #6610f2 !default;
 $purple: #6a4d8a !default;
 $pink: #d63384 !default;
 $red: #dc3545 !default;
 $orange: #f18b6d !default;
 $yellow: #ffc107 !default;
-$green: #198754 !default;
+$green: #d7495e !default;
 $teal: #20c997 !default;
 $cyan: #0dcaf0 !default;
 $gris: #8c95a4 !default;
@@ -51,7 +51,8 @@ $footer: #292825 !default;
 $seablue: #2086d8 !default;
 $sandyellow: #e7bd35 !default;
 $twilightorange: #d7495e !default;
-$star : #d6a800 !default;
+$star: #d6a800 !default;
+$night: #080b3d !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -75,7 +76,8 @@ $colors: (
   "seablue": $seablue,
   "sandyellow": $sandyellow,
   "twilightorange": $twilightorange,
-  "star" : $star,
+  "star": $star,
+  "night": $night,
 ) !default;
 // scss-docs-end colors-map
 
@@ -346,6 +348,7 @@ $theme-colors: (
   "sandyellow": $sandyellow,
   "twilightorange": $twilightorange,
   "star": $star,
+  "night": $night,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -724,6 +727,7 @@ $table-variants: (
   "info": shift-color($info, $table-bg-scale),
   "warning": shift-color($warning, $table-bg-scale),
   "danger": shift-color($danger, $table-bg-scale),
+  "twilightorange": shift-color($twilightorange, $table-bg-scale),
   "light": $light,
   "dark": $dark,
 ) !default;

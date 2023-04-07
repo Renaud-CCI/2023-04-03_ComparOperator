@@ -75,7 +75,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
 
     </div>
-    <div id="reviewsDiv<?= $tour_operator_id ?>" class="justify-content-center align-content-center text-align-center" style="display:none">
+    <div id="reviewsDiv<?= $tour_operator_id ?>" class="justify-content-center align-content-center text-align-center mb-2" style="display:none">
 
       <article class="leaderboard ">
         <header>
