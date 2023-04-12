@@ -16,6 +16,7 @@ $threeDestinations = $manager->getThreeRandomDestinations();
 
   <?php foreach ($threeDestinations as $destination): ?>
     <?php $tourOperator = $manager->getTour_operator($destination->getTour_operator_id()) ?>
+    <a href="./journeyDetail.php?location=<?=$destination->getLocation()?>&tour_operator_id=<?=$tourOperator->getId()?>">
     <div class="carousel-item <?php require_once("./partials/isActive.php")?>" data-bs-interval="10000">
       <img src="../images/bonPlan.png" class="d-block w-25 " alt="...">
       <div class="carousel-caption d-none d-md-block w-75">
@@ -23,6 +24,7 @@ $threeDestinations = $manager->getThreeRandomDestinations();
         <p class="text-sandyellow">pour <?=$destination->getPrice ()?>€ avec <?= $tourOperator->getName()?></p>
       </div>
     </div>
+    </a>
   <?php endforeach ?>
 
   </div>

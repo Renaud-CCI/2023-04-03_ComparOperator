@@ -172,23 +172,26 @@ class Manager {
         return $user;
     }
     
-}
-
-public function getThreeRandomDestinations(){
-  $query = $this->db->query(' SELECT *
-                                FROM destination
-                                LIMIT 3');                         
-  $allDestinationsDatas = $query->fetchAll(PDO::FETCH_ASSOC); 
-
-  $allDestinationsAsObjects = [];        
-  
-  foreach ($allDestinationsDatas as $destinationDatas) {
-      $destinationAsObject = new Destination($destinationDatas);
-      array_push($allDestinationsAsObjects, $destinationAsObject);
   }
-  
-  return $allDestinationsAsObjects; 
-}
+
+  public function getThreeRandomDestinations(){
+    $query = $this->db->query(' SELECT *
+                                FROM destination
+                                JOIN tour_operator ON destination.tour_operator_id = tour_operator.id
+                                WHERE tour_operator.premium_status = 1
+                                ORDER BY RAND()
+                                LIMIT 3');                         
+    $allDestinationsDatas = $query->fetchAll(PDO::FETCH_ASSOC); 
+
+    $allDestinationsAsObjects = [];        
+    
+    foreach ($allDestinationsDatas as $destinationDatas) {
+        $destinationAsObject = new Destination($destinationDatas);
+        array_push($allDestinationsAsObjects, $destinationAsObject);
+    }
+    
+    return $allDestinationsAsObjects; 
+  }
 
   public function updateOperatorDatas(array $operator_datas){
     $query = $this->db->prepare('   UPDATE tour_operator 
