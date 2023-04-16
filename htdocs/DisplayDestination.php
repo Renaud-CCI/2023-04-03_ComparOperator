@@ -58,7 +58,7 @@ $allDestinations = $manager->getDestinationsForLocation($_GET['location']);
 
           <p>
             <?php if ($manager->getTourOperatorScore($tour_operator_id) != 'aucune evaluation') : ?>
-              Evaluation : <?= ranking($manager->getTourOperatorScore($tour_operator_id)) ?>
+              Evaluation : <span title="<?=$manager->getTourOperatorScore($tour_operator_id) ?>"><?= ranking($manager->getTourOperatorScore($tour_operator_id)) ?></span>
             <?php else : ?>
               Evaluation : <?= $manager->getTourOperatorScore($tour_operator_id) ?>
             <?php endif ?>

@@ -46,6 +46,7 @@ if (isset($_GET)) {
   }
 
   if (isset($_GET['createDestination'])) {
+    isset ($_GET['otherLocation'])? $_GET['location'] = $_GET['otherLocation'] : '';
     $manager->createDestination($_GET);
     header('Location: ./admin.php?createDestinationSuccess=true');
     exit;
@@ -227,25 +228,28 @@ if (isset($_GET)) {
 
                   <select id="selectLocation" name="location">
                     <?php foreach ($allLocations as $location) : ?>
-                      <option value="option1" required><?= $location ?></option>
+                      <?= prettyDump($location)?>
+                      <option value="<?= $location ?>" required><?= $location ?></option>
                     <?php endforeach; ?>
                     <option value="other">Autre</option>
                   </select>
 
                   <div id="otherInput" style="display:none;">
                     <label for="otherLocation">Saisir une autre destination :</label>
-                    <input type="text" id="otherLocation" name="location">
+                    <input type="text" id="otherLocation" name="otherLocation">
                   </div>
 
                   <script>
                     var selectLocation = document.getElementById("selectLocation");
                     var otherInput = document.getElementById("otherInput");
+                    var otherLocation = document.getElementById("otherLocation");
 
                     selectLocation.addEventListener("change", function() {
                       if (selectLocation.value === "other") {
                         otherInput.style.display = "block";
                       } else {
                         otherInput.style.display = "none";
+                        otherLocation.value = selectLocation.value
                       }
                     });
                   </script>
